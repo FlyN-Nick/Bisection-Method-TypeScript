@@ -1,0 +1,17 @@
+{
+  "compilerOptions": 
+  {
+    "target": "es6",
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "react",
+    "allowJs": false,
+    "sourceMap": true,
+    "inlineSources": true,
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
+  }
+}
