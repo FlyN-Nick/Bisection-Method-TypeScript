@@ -2,7 +2,7 @@
 // Author: Nicholas Assaderaghi (FlyN Nick)
 // Why did I write this in TypeScript: I felt like it :) 
 
-/** Returns the value of an expressios given x. */
+/** Returns the value of an expression given x. */
 function convert(f: ((x: number) => number) | string, x: number): number
 {
   if (typeof f == 'string') { return eval(f); }
