@@ -1,23 +1,18 @@
 {
-  "name": "flynnick_bisection_method",
-  "description": "A quick and inneficient implementation of the bisection method in TS.",
+  "name": "@flyn-nick/bisection-method",
+  "description": "A quick and inefficient implementation of the bisection method in TS.",
   "version": "1.0.0",
   "main": "./dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "types": "dist/index.d.ts",
+  "scripts": {  "test": "echo \"ERROR: Sorry, no test included 😢.\" && exit 0" },
   "repository": {
     "type": "git",
     "url": "https://github.com/FlyN-Nick/Bisection-Method.git"
   },
-  "keywords": [
-    "bisection",
-    "bisection method"
-  ],
-  "author": "Nicholas Assaderaghi",
+  "keywords": [ "bisection", "bisection method" ],
+  "author": "Nicholas Assaderaghi <nickassader@gmail.com> (https://github.com/FlyN-Nick)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FlyN-Nick/Bisection-Method/issues"
-  },
-  "homepage": "https://github.com/FlyN-Nick/Bisection-Method"
+  "bugs": { "url": "https://github.com/FlyN-Nick/Bisection-Method/issues" },
+  "homepage": "https://github.com/FlyN-Nick/Bisection-Method",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
