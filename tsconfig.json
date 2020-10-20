@@ -1,6 +1,9 @@
 {
   "compilerOptions": 
   {
+    "name": "FlyN Nick's Bisection Method",
+    "version": "1.0.0",
+    "description": "A terrible implementation of the bisection method in TS.",
     "target": "es6",
     "lib": ["esnext", "dom"],
     "module": "commonjs",
@@ -12,6 +15,7 @@
     "inlineSources": true,
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "declaration": true
   }
 }
