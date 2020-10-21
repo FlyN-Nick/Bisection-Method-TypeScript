@@ -1,7 +1,7 @@
 {
   "name": "@flyn-nick/bisection-method",
   "description": "A quick and inefficient implementation of the bisection method in TS.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {  "test": "echo \"ERROR: Sorry, no test included 😢.\" && exit 0" },
