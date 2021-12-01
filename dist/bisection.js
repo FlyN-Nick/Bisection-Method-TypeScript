@@ -9,26 +9,27 @@ function convert(f, x) {
         return f(x);
     }
 }
-function bisection(f, min, max, maxIter = 100, annoyingConsoleLogs = false) {
+function bisection(f, min, max, maxIter = 100, annoyingConsoleLogs = false, epsilon = 0) {
     console.log("---------------------------------------------------------------");
     if (min > max) {
-        console.log("You seem to have mixed the min and max...");
-        return 'ERROR';
+        let tmp = max;
+        max = min;
+        min = tmp;
     }
-    else if (min == max && convert(f, min) == 0) {
-        console.log("Wow, the given min and max were the same and were the root. Kinda seems like this was on purpose...");
+    if (min == max && convert(f, min) == 0) {
+        console.log("Min=max=root.");
         return min;
     }
     else if (min == max) {
-        console.log("Wow, the given min and max were the same but were not the root. Kinda seems like this was on purpose...");
+        console.log("Min=max≠root.");
         return 'ERROR';
     }
     else if (convert(f, min) == 0) {
-        console.log("Wow, the lower bound of the given range was the root. Kinda seems like this was on purpose...");
+        console.log("Min=root.");
         return min;
     }
     else if (convert(f, max) == 0) {
-        console.log("Wow, the upper bound of the given range was the root. Kinda seems like this was on purpose...");
+        console.log("Max=root.");
         return max;
     }
     let posSlope = true;
@@ -55,7 +56,7 @@ function bisection(f, min, max, maxIter = 100, annoyingConsoleLogs = false) {
             }
             max = guess;
         }
-        else {
+        else if (Math.abs(convert(f, guess) - 0) <= epsilon) {
             console.log(`Root: ${guess}.\nIterations it took: ${iter}.`);
             return guess;
         }

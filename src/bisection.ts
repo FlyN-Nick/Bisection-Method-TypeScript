@@ -16,42 +16,43 @@ function convert(f: ((x: number) => number) | string, x: number): number
  * Things that may cause this to be unsuccessfull/error:
  * #1: Root is not within given range. 
  * #2: Function changes signs more than once within given range.
- * #3: The given minimum is greater than the given maximum. 
- * #4: There are x within given range where f(x) is undefined. 
+ * #3: There are x within given range where f(x) is undefined. 
  * 
  * @param {(x: number) => any} f - function you want to find the root of. 
  * @param {number} min - min of given range.
  * @param {number} max - max of given range.
  * @param {bool} annoyingConsoleLogs - (optional) really annoying console log ever iteration. 
- * @param {number} maxIter - (optional) max number of iterations 
+ * @param {number} maxIter - (optional) max number of iterations.
+ * @param {number} epsilon - (optional) tolerance for finding root.
  */
-export function bisection(f: ((x: number) => number) | string, min: number, max: number, maxIter=100, annoyingConsoleLogs=false): number | [number, number] | 'ERROR'
+export function bisection(f: ((x: number) => number) | string, min: number, max: number, maxIter=100, annoyingConsoleLogs=false, epsilon=0): number | [number, number] | 'ERROR'
 {  
   console.log("---------------------------------------------------------------");
 
   if (min > max) 
   {
-    console.log("You seem to have mixed the min and max...");
-    return 'ERROR'; 
+    let tmp = max;
+    max = min
+    min = tmp;
   }
-  else if (min == max && convert(f, min) == 0)
+  if (min == max && convert(f, min) == 0)
   {
-    console.log("Wow, the given min and max were the same and were the root. Kinda seems like this was on purpose...");
+    console.log("Min=max=root.");
     return min; 
   }
   else if (min == max)
   {
-    console.log("Wow, the given min and max were the same but were not the root. Kinda seems like this was on purpose...");
+    console.log("Min=max≠root.");
     return 'ERROR';
   }
   else if (convert(f, min) == 0)
   {
-    console.log("Wow, the lower bound of the given range was the root. Kinda seems like this was on purpose...");
+    console.log("Min=root.");
     return min;
   }
   else if (convert(f, max) == 0)
   {
-    console.log("Wow, the upper bound of the given range was the root. Kinda seems like this was on purpose...");
+    console.log("Max=root.");
     return max;
   }
 
@@ -84,9 +85,9 @@ export function bisection(f: ((x: number) => number) | string, min: number, max:
       }
       max = guess; 
     }
-    else 
+    else if (Math.abs(convert(f, guess) - 0) <= epsilon)
     {
-    	console.log(`Root: ${guess}.\nIterations it took: ${iter}.`);
+      console.log(`Root: ${guess}.\nIterations it took: ${iter}.`);
       return guess;
     }
     if (annoyingConsoleLogs) 
